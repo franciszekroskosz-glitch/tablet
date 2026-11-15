@@ -3,48 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Notion</title>
+<title>Dashboard</title>
 
 <style>
 body{
     margin:0;
-    padding:10px;
-    background:transparent;
+    padding:20px;
+    background:#111;
+    color:white;
+    font-family:Arial, sans-serif;
     display:flex;
-    gap:12px;
-    justify-content:center;
-    align-items:flex-start;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+#clock{
+    font-size:64px;
+    font-weight:bold;
+}
+
+#date{
+    font-size:24px;
 }
 
 iframe{
     border:none;
     border-radius:12px;
-    overflow:hidden;
-}
-
-.clock{
-    width:280px;
-    height:280px;
-}
-
-.weather{
-    width:420px;
-    height:280px;
 }
 </style>
 </head>
 
 <body>
 
-<iframe
-    class="clock"
-    src="https://indify.co/widgets/live/clock/FbOsLCQY1kVuXpvd59ly">
-</iframe>
+<div id="clock">00:00:00</div>
+<div id="date"></div>
 
 <iframe
-    class="weather"
-    src="https://indify.co/widgets/live/weather/CdClu33HVSTxNfdyYG5s">
+    src="https://indify.co/widgets/live/weather/CdClu33HVSTxNfdyYG5s"
+    width="420"
+    height="280">
 </iframe>
 
-</body>
-</html>
+<script>
+function updateClock() {
+    var d = new Date();
+
+    var h = ("0" + d.getHours()).slice(-2);
+    var m = ("0" + d.getMinutes()).slice(-2);
+    var s = ("0" + d.getSeconds()).slice(-2);
+
+    document.getElementById("clock").innerHTML =
+        h + ":" + m + ":" + s;
+
+    var days = [
+        "Niedziela","Poniedziałek","Wtorek",
+        "Środa","Czwartek","Piątek","Sobota"
+    ];
+
+    var months = [
+        "stycznia","lutego","marca","kwietnia",
+        "maja","czerwca","lipca","sierpnia",
+        "września","października","listopada","grudnia"
+    ];
+
+    document.getElementById("date").innerHTML =
