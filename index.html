@@ -1,63 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
 
 <style>
-body{
-    background:#111;
-    color:#fff;
-    font-family:Arial,sans-serif;
-    text-align:center;
-    margin:0;
-    padding:20px;
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
 }
 
-#clock{
-    font-size:60px;
-    font-weight:bold;
-    margin-top:10px;
+body {
+    text-align: center;
 }
 
-#date{
-    font-size:24px;
-    margin-bottom:20px;
-    color:#ddd;
+#clock {
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
-iframe{
-    border:none;
+#date {
+    font-size: 24px;
+    margin: 10px 0 20px 0;
+    color: #dddddd;
+}
+
+.weather {
+    width: 100%;
+    height: 350px;
+    border: none;
+    display: block;
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <div id="clock"></div>
 <div id="date"></div>
 
 <iframe
-src="https://indify.co/widgets/live/weather/CdClu33HVSTxNfdyYG5s"
-width="420"
-height="280">
+    class="weather"
+    src="https://indify.co/widgets/live/weather/CdClu33HVSTxNfdyYG5s">
 </iframe>
 
 <script>
-function zegar() {
-    var teraz = new Date();
+function updateClock() {
+    var d = new Date();
 
-    var godz = teraz.getHours();
-    var min = teraz.getMinutes();
-    var sek = teraz.getSeconds();
+    var h = d.getHours();
+    var m = d.getMinutes();
+    var s = d.getSeconds();
 
-    if (godz < 10) godz = "0" + godz;
-    if (min < 10) min = "0" + min;
-    if (sek < 10) sek = "0" + sek;
+    if (h < 10) h = "0" + h;
+    if (m < 10) m = "0" + m;
+    if (s < 10) s = "0" + s;
 
     document.getElementById("clock").innerHTML =
-        godz + ":" + min + ":" + sek;
+        h + ":" + m + ":" + s;
 
     var dni = [
         "Niedziela",
@@ -74,4 +79,26 @@ function zegar() {
         "lutego",
         "marca",
         "kwietnia",
-        "maja
+        "maja",
+        "czerwca",
+        "lipca",
+        "sierpnia",
+        "września",
+        "października",
+        "listopada",
+        "grudnia"
+    ];
+
+    document.getElementById("date").innerHTML =
+        dni[d.getDay()] + ", " +
+        d.getDate() + " " +
+        miesiace[d.getMonth()] + " " +
+        d.getFullYear();
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
