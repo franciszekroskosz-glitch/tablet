@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Notion</title>
+
+<style>
+body{
+    margin:0;
+    padding:10px;
+    background:transparent;
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+iframe{
+    border:none;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.clock{
+    width:280px;
+    height:280px;
+}
+
+.weather{
+    width:420px;
+    height:280px;
+}
+</style>
+</head>
+
+<body>
+
+<iframe
+    class="clock"
+    src="https://indify.co/widgets/live/clock/FbOsLCQY1kVuXpvd59ly">
+</iframe>
+
+<iframe
+    class="weather"
+    src="https://indify.co/widgets/live/weather/CdClu33HVSTxNfdyYG5s">
+</iframe>
+
+</body>
+</html>
