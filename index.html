@@ -1,70 +1,56 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
 <title>Dashboard</title>
 
 <style>
 body{
+    background:#111;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    text-align:center;
     margin:0;
     padding:20px;
-    background:#111;
-    color:white;
-    font-family:Arial, sans-serif;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
 }
 
 #clock{
-    font-size:64px;
-    font-weight:bold;
-}
-
-#date{
-    font-size:24px;
-}
-
-iframe{
-    border:none;
-    border-radius:12px;
+    font-size:60px;
+    margin:20px 0;
 }
 </style>
 </head>
 
 <body>
 
-<div id="clock">00:00:00</div>
-<div id="date"></div>
+<div id="clock"></div>
 
 <iframe
-    src="https://indify.co/widgets/live/weather/CdClu33HVSTxNfdyYG5s"
-    width="420"
-    height="280">
+src="https://indify.co/widgets/live/weather/CdClu33HVSTxNfdyYG5s"
+width="420"
+height="280"
+style="border:none;">
 </iframe>
 
 <script>
-function updateClock() {
-    var d = new Date();
+function zegar() {
+  var teraz = new Date();
 
-    var h = ("0" + d.getHours()).slice(-2);
-    var m = ("0" + d.getMinutes()).slice(-2);
-    var s = ("0" + d.getSeconds()).slice(-2);
+  var godz = teraz.getHours();
+  var min = teraz.getMinutes();
+  var sek = teraz.getSeconds();
 
-    document.getElementById("clock").innerHTML =
-        h + ":" + m + ":" + s;
+  if(godz < 10) godz = "0" + godz;
+  if(min < 10) min = "0" + min;
+  if(sek < 10) sek = "0" + sek;
 
-    var days = [
-        "Niedziela","Poniedziałek","Wtorek",
-        "Środa","Czwartek","Piątek","Sobota"
-    ];
+  document.getElementById("clock").innerHTML =
+    godz + ":" + min + ":" + sek;
+}
 
-    var months = [
-        "stycznia","lutego","marca","kwietnia",
-        "maja","czerwca","lipca","sierpnia",
-        "września","października","listopada","grudnia"
-    ];
+zegar();
+window.setInterval(zegar,1000);
+</script>
 
-    document.getElementById("date").innerHTML =
+</body>
+</html>
